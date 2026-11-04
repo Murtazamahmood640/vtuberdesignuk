@@ -666,13 +666,17 @@ i.bestseller {
   position: relative;
 }
 .pack-price h4.pack-amt {
-  font-size: 48px;
+  font-size: 42px;
   font-weight: 700;
-  line-height: 43px;
+  line-height: 1.2;
   position: relative;
-  display: table;
-  margin: 0 auto 40px;
-  padding: 0 70px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+  margin: 0 auto 30px !important;
+  padding: 0 10px !important;
 }
 .pack-price h4.pack-amt sup {
   position: static;
@@ -1113,17 +1117,8 @@ section.our_industry .row {
 }
 .pack-price h4.pack-amt:after,
 .pack-price h4.pack-amt:before {
-  content: "";
-  position: absolute;
-  left: 20px;
-  width: 40px;
-  height: 4px;
-  background: #7c38c6;
-  top: 20px;
-}
-.pack-price h4.pack-amt:after {
-  left: auto;
-  right: 20px;
+  display: none !important;
+  content: none !important;
 }
 .pack-inn:active,
 .pack-inn:focus,
@@ -2860,11 +2855,10 @@ section.packages .seo-points ul li.seo_col {
   font-size: 40px;
   padding: 0 30px;
 }
-.pack4 .pack-price h4.pack-amt:before {
-  left: 0;
-}
+.pack4 .pack-price h4.pack-amt:before,
 .pack4 .pack-price h4.pack-amt:after {
-  right: 0;
+  display: none !important;
+  content: none !important;
 }
 .pack4 .pack-price h4.pack-amt span.old_price {
   font-size: 18px;
@@ -4413,5 +4407,20 @@ section.privacy_sec {
 }
 
 /* VAT note styling */
-.vat-note { display: block; font-size: 13px; font-weight: 600; color: #888888; text-transform: uppercase; letter-spacing: 0.5px; margin: 4px auto; text-align: center; }
+.vat-note {
+  display: inline-flex !important;
+  align-items: center !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  background: linear-gradient(135deg, #7928ca 0%, #a855f7 100%) !important;
+  padding: 3px 8px !important;
+  border-radius: 6px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  line-height: normal !important;
+  vertical-align: middle !important;
+  box-shadow: 0 2px 6px rgba(121, 40, 202, 0.35) !important;
+  margin-left: 6px !important;
+}
 
