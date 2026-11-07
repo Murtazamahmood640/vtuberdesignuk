@@ -1,3 +1,81 @@
+// Local file:/// protocol compatibility handler
+// Automatically resolves root-relative routes (e.g. /about-us -> about-us.html) when opening files directly from disk,
+// while preserving clean URLs in production on Vercel / web servers.
+(function () {
+  if (window.location.protocol === "file:") {
+    function resolveLocalLinks() {
+      var links = document.querySelectorAll("a[href]");
+      for (var i = 0; i < links.length; i++) {
+        var href = links[i].getAttribute("href");
+        if (!href) continue;
+        if (href === "/") {
+          links[i].setAttribute("href", "index.html");
+        } else if (href.startsWith("/") && !href.startsWith("//")) {
+          var clean = href.slice(1);
+          var hash = "";
+          var query = "";
+          if (clean.indexOf("#") !== -1) {
+            var parts = clean.split("#");
+            clean = parts[0];
+            hash = "#" + parts.slice(1).join("#");
+          }
+          if (clean.indexOf("?") !== -1) {
+            var qparts = clean.split("?");
+            clean = qparts[0];
+            query = "?" + qparts.slice(1).join("?");
+          }
+          var target = clean || "index";
+          if (!target.endsWith(".html") && target.indexOf(".") === -1) {
+            target += ".html";
+          }
+          links[i].setAttribute("href", target + query + hash);
+        }
+      }
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", resolveLocalLinks);
+    } else {
+      resolveLocalLinks();
+    }
+
+    document.addEventListener(
+      "click",
+      function (e) {
+        var a = e.target.closest ? e.target.closest("a") : null;
+        if (!a) return;
+        var href = a.getAttribute("href");
+        if (!href) return;
+        if (href === "/") {
+          e.preventDefault();
+          window.location.href = "index.html";
+        } else if (href.startsWith("/") && !href.startsWith("//")) {
+          e.preventDefault();
+          var clean = href.slice(1);
+          var hash = "";
+          var query = "";
+          if (clean.indexOf("#") !== -1) {
+            var parts = clean.split("#");
+            clean = parts[0];
+            hash = "#" + parts.slice(1).join("#");
+          }
+          if (clean.indexOf("?") !== -1) {
+            var qparts = clean.split("?");
+            clean = qparts[0];
+            query = "?" + qparts.slice(1).join("?");
+          }
+          var target = clean || "index";
+          if (!target.endsWith(".html") && target.indexOf(".") === -1) {
+            target += ".html";
+          }
+          window.location.href = target + query + hash;
+        }
+      },
+      true
+    );
+  }
+})();
+
 $(window).on("load", function () {
   $(".pack-ul").mCustomScrollbar({
     autoHideScrollbar: true,

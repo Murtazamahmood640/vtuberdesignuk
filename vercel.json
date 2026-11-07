@@ -1,4 +1,32 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/about-us", "destination": "/about-us.html" },
+    { "source": "/contact-us", "destination": "/contact-us.html" },
+    { "source": "/portfolio", "destination": "/portfolio.html" },
+    { "source": "/testimonials", "destination": "/testimonials.html" },
+    { "source": "/packages", "destination": "/packages.html" },
+    { "source": "/combo-package", "destination": "/combo-package.html" },
+    { "source": "/logo-design", "destination": "/logo-design.html" },
+    { "source": "/web-development", "destination": "/web-development.html" },
+    { "source": "/motion-graphics", "destination": "/motion-graphics.html" },
+    { "source": "/app-design-and-development", "destination": "/app-design-and-development.html" },
+    { "source": "/creative-copywriting", "destination": "/creative-copywriting.html" },
+    { "source": "/digital-marketing", "destination": "/digital-marketing.html" },
+    { "source": "/illustration-design", "destination": "/illustration-design.html" },
+    { "source": "/social-media-marketing", "destination": "/social-media-marketing.html" },
+    { "source": "/seo-services", "destination": "/seo-services.html" },
+    { "source": "/logo-packages", "destination": "/logo-packages.html" },
+    { "source": "/web-packages", "destination": "/web-packages.html" },
+    { "source": "/video-packages", "destination": "/video-packages.html" },
+    { "source": "/copywriting-packages", "destination": "/copywriting-packages.html" },
+    { "source": "/illustration-packages", "destination": "/illustration-packages.html" },
+    { "source": "/marketingcollateral-packages", "destination": "/marketingcollateral-packages.html" },
+    { "source": "/seo-packages", "destination": "/seo-packages.html" },
+    { "source": "/ecommerce-packages", "destination": "/ecommerce-packages.html" },
+    { "source": "/ecommerce-solutions", "destination": "/ecommerce-solutions.html" },
+    { "source": "/privacy-policy", "destination": "/privacy-policy.html" },
+    { "source": "/terms-and-conditions", "destination": "/terms-and-conditions.html" }
+  ]
 }

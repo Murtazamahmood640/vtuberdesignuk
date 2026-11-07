@@ -1,4 +1,4 @@
-/**
+﻿/**
  * ============================================================
  * VTUBER DESIGN UK - AI Assistant & Tawk.to Integration
  * ============================================================
@@ -6,36 +6,27 @@
 
 (function () {
   // ----------------------------------------------------------
-  // 1. TAWK.TO CONFIGURATION
+  // 1. TAWK.TO LIVE CHAT INTEGRATION
   // ----------------------------------------------------------
-  // To activate live 1-on-1 human chat via tawk.to:
-  // 1. Sign up for free at https://www.tawk.to
-  // 2. Add your Property (Name: "VTUBER DESIGN UK")
-  // 3. Paste your Property ID and Widget ID below:
-  const TAWK_PROPERTY_ID = ''; // e.g. '657a8b9c...'
-  const TAWK_WIDGET_ID   = ''; // e.g. '1hhn2k...'
+  const TAWK_PROPERTY_ID = '6ae8e319e252203c32570ce9';
+  const TAWK_WIDGET_ID   = '1k6ere6v3';
 
-  let isTawkLoaded = false;
+  window.Tawk_API = window.Tawk_API || {};
+  window.Tawk_LoadStart = new Date();
 
-  // Initialize Tawk.to if credentials are present
-  if (TAWK_PROPERTY_ID && TAWK_WIDGET_ID) {
-    window.Tawk_API = window.Tawk_API || {};
-    window.Tawk_LoadStart = new Date();
+  (function () {
     const s1 = document.createElement("script");
+    const s0 = document.getElementsByTagName("script")[0] || document.head;
     s1.async = true;
     s1.src = `https://embed.tawk.to/${TAWK_PROPERTY_ID}/${TAWK_WIDGET_ID}`;
     s1.charset = 'UTF-8';
     s1.setAttribute('crossorigin', '*');
-    document.head.appendChild(s1);
-
-    window.Tawk_API.onLoad = function () {
-      isTawkLoaded = true;
-      // Optionally hide Tawk default widget until requested
-      try {
-        window.Tawk_API.hideWidget();
-      } catch (e) {}
-    };
-  }
+    if (s0.parentNode) {
+      s0.parentNode.insertBefore(s1, s0);
+    } else {
+      document.head.appendChild(s1);
+    }
+  })();
 
   // ----------------------------------------------------------
   // 2. CHATBOT DOM INJECTION
@@ -141,12 +132,17 @@
   }
 
   function switchToLiveAgent() {
-    if (isTawkLoaded && window.Tawk_API && typeof window.Tawk_API.maximize === 'function') {
-      // Close custom box and open Tawk.to live chat
-      toggleChat();
+    if (window.Tawk_API && typeof window.Tawk_API.maximize === 'function') {
+      const box = document.getElementById('vtd-chat-box');
+      if (box && box.classList.contains('active')) {
+        toggleChat();
+      }
       try {
-        window.Tawk_API.showWidget();
+        if (typeof window.Tawk_API.showWidget === 'function') {
+          window.Tawk_API.showWidget();
+        }
         window.Tawk_API.maximize();
+        return;
       } catch (e) {
         console.warn('Tawk error', e);
       }
@@ -186,12 +182,12 @@
         appendBotMessage(`
           🎨 <strong>VTUBER DESIGN UK Services:</strong><br>
           &bull; <strong>VTuber 2D/3D Rigging & Modeling</strong><br>
-          &bull; <strong>Logo & Identity Design</strong> (<a href="logo-design.html">Explore</a>)<br>
-          &bull; <strong>Custom Website Development</strong> (<a href="web-development.html">Explore</a>)<br>
-          &bull; <strong>Motion Graphics & Animation</strong> (<a href="motion-graphics.html">Explore</a>)<br>
-          &bull; <strong>Illustration & Character Design</strong> (<a href="illustration-design.html">Explore</a>)<br>
-          &bull; <strong>Social Media Marketing & SEO</strong> (<a href="social-media-marketing.html">Explore</a>)<br><br>
-          Need a custom quote? Visit our <a href="combo-package.html">Combo Package</a> or <a href="contact-us.html">Contact Us</a>.
+          &bull; <strong>Logo & Identity Design</strong> (<a href="/logo-design">Explore</a>)<br>
+          &bull; <strong>Custom Website Development</strong> (<a href="/web-development">Explore</a>)<br>
+          &bull; <strong>Motion Graphics & Animation</strong> (<a href="/motion-graphics">Explore</a>)<br>
+          &bull; <strong>Illustration & Character Design</strong> (<a href="/illustration-design">Explore</a>)<br>
+          &bull; <strong>Social Media Marketing & SEO</strong> (<a href="/social-media-marketing">Explore</a>)<br><br>
+          Need a custom quote? Visit our <a href="/combo-package">Combo Package</a> or <a href="/contact-us">Contact Us</a>.
         `);
       }, 400);
     } else if (type === 'pricing') {
@@ -201,7 +197,7 @@
           📦 <strong>Packages & Pricing (UK):</strong><br>
           &bull; All rates are billed in <strong>GBP (£)</strong>.<br>
           &bull; In accordance with UK guidelines, all shown package prices are <strong>exclusive of VAT (exc. VAT)</strong>.<br>
-          &bull; Check our full catalogue on the <a href="packages.html">Packages Hub</a> or <a href="logo-packages.html">Logo Packages</a> and <a href="web-packages.html">Web Packages</a>.
+          &bull; Check our full catalogue on the <a href="/packages">Packages Hub</a> or <a href="/logo-packages">Logo Packages</a> and <a href="/web-packages">Web Packages</a>.
         `);
       }, 400);
     } else if (type === 'contact') {
@@ -240,7 +236,7 @@
         appendBotMessage(`
           Our pricing plans are tailored to your project scope:<br>
           &bull; Starter designs from £35.00 (exc. VAT).<br>
-          &bull; Complete branding & combo packages available on our <a href="packages.html">Packages page</a>.<br>
+          &bull; Complete branding & combo packages available on our <a href="/packages">Packages page</a>.<br>
           &bull; All pricing is exclusive of VAT (exc. VAT).<br>
           Would you like to discuss a custom package?
         `);
@@ -259,7 +255,7 @@
           &bull; Custom Stream Branding & Logo Design<br>
           &bull; Responsive Creator Websites & E-Commerce<br>
           &bull; Motion Graphics & Overlays<br>
-          Visit our <a href="portfolio.html">Portfolio</a> to see recent work!
+          Visit our <a href="/portfolio">Portfolio</a> to see recent work!
         `);
       } else {
         appendBotMessage(`
@@ -274,9 +270,11 @@
   // 3. GLOBAL HOOK: openLiveChat()
   // ----------------------------------------------------------
   window.openLiveChat = function () {
-    if (isTawkLoaded && window.Tawk_API && typeof window.Tawk_API.maximize === 'function') {
+    if (window.Tawk_API && typeof window.Tawk_API.maximize === 'function') {
       try {
-        window.Tawk_API.showWidget();
+        if (typeof window.Tawk_API.showWidget === 'function') {
+          window.Tawk_API.showWidget();
+        }
         window.Tawk_API.maximize();
         return;
       } catch (e) {}
