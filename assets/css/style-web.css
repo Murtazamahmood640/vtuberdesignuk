@@ -194,12 +194,13 @@ header.header123 .row {
   color: #000000;
 }
 header {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   padding: 15px 0;
   z-index: 100;
+  background: #05143a;
 }
 header .container-fluid {
   padding: 0 60px;
