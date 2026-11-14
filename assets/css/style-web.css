@@ -210,9 +210,13 @@ header .logo {
   margin: 0;
 }
 header .logo img {
-  max-height: 60px;
+  max-height: 82px;
   width: auto;
   object-fit: contain;
+  transition: max-height 0.3s ease;
+}
+.header123.navbar-shrink .logo img {
+  max-height: 72px;
 }
 header .menu {
   text-align: right;
@@ -1061,6 +1065,22 @@ ul.footer-social li a {
   background: -moz-linear-gradient(left, #ff5122 0, #e51928 100%);
   background: linear-gradient(to right, #0a4a82 0, #610279 100%);
   border-radius: 3px;
+  transition: all 0.3s ease;
+}
+ul.footer-social li a.facebook:hover {
+  background: #1877f2 !important;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+ul.footer-social li a.instagram:hover {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%) !important;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+ul.footer-social li a.linkedin:hover {
+  background: #0077b5 !important;
+  color: #ffffff;
+  transform: translateY(-2px);
 }
 .serv-thumb img {
   max-width: none;
@@ -1495,6 +1515,9 @@ section.nservice-block {
 section.nservice-block123 {
   padding: 5em 0 5em 0;
   background: #ebebeb;
+  position: relative;
+  z-index: 10;
+  clear: both;
 }
 .nserv-thumb {
   position: relative;
@@ -1763,11 +1786,20 @@ ul.nav.bnav-pills li a:hover {
   width: 100%;
   margin-top: 0;
 }
+.contact-line ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
 .contact-line li {
-  width: 38.33%;
-  float: left;
+  width: 48%;
+  float: none;
   position: relative;
   margin-right: 0;
+  margin-bottom: 35px;
 }
 .contact-line li a {
   font-size: 18px;
@@ -1798,11 +1830,86 @@ ul.nav.bnav-pills li a:hover {
 .contact-line li.cloc a:before {
   background-position: -490px -692px;
 }
-.contact-line li a span.clabel {
+.contact-line li a span.clabel,
+.contact-line li .csocial-box span.clabel {
   font-size: 24px;
   font-weight: 600;
   color: #a855f7;
   display: block;
+}
+.contact-line li.csocial {
+  padding-left: 90px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.contact-line li.csocial:before {
+  content: "\f1e0";
+  font-family: FontAwesome;
+  position: absolute;
+  left: 0;
+  top: 5px;
+  width: 75px;
+  height: 75px;
+  background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 30px;
+  box-shadow: 0 4px 15px rgba(168, 85, 247, 0.35);
+}
+.contact-line li.csocial span.clabel {
+  margin-bottom: 10px;
+}
+.contact-line li.csocial .c-social-icons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.contact-line li.csocial .c-social-icons a {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #0d1b3e;
+  border: 1px solid rgba(168, 85, 247, 0.5);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 18px;
+  padding: 0;
+  float: none;
+  transition: all 0.3s ease;
+}
+.contact-line li.csocial .c-social-icons a:before {
+  display: none !important;
+}
+.contact-line li.csocial .c-social-icons a.linkedin:hover {
+  background: #0077b5;
+  border-color: #0077b5;
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 119, 181, 0.4);
+}
+.contact-line li.csocial .c-social-icons a.facebook:hover {
+  background: #1877f2;
+  border-color: #1877f2;
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(24, 119, 242, 0.4);
+}
+.contact-line li.csocial .c-social-icons a.instagram:hover {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  border-color: #d6249f;
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(214, 36, 159, 0.4);
+}
+@media (max-width: 768px) {
+  .contact-line li {
+    width: 100% !important;
+  }
 }
 section.contact-form {
   padding: 5em 0;
@@ -1811,8 +1918,6 @@ section.contact-form {
 }
 .contact-line li:last-child {
   margin-right: 0;
-  width: auto;
-  float: right;
 }
 .banner-center {
   color: #ffffff;
@@ -3366,6 +3471,9 @@ section.about-new-sec .p0 {
   background-position: center center;
   background-repeat: no-repeat;
   padding-top: 150px;
+  padding-bottom: 70px;
+  position: relative;
+  overflow: hidden;
 }
 .bnr-slider-rht {
   position: relative;
@@ -3445,8 +3553,19 @@ section.about-new-sec .p0 {
 .bnr-lft-slider2 img {
   width: 100%;
 }
-.bnr-main-slider img {
-  width: 100%;
+.main-slider-bnr {
+  max-width: 580px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 5;
+}
+.bnr-main-slider img,
+.bnr-center-item img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  object-fit: contain;
 }
 .slider-bnrR3.slider-bnrR6 {
   margin-left: 14%;
