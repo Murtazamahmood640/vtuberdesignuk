@@ -226,15 +226,18 @@ header .logo img {
     padding: 0 20px;
   }
   header .logo img {
-    max-height: 48px;
+    max-height: 56px;
   }
   .header123.navbar-shrink .logo img {
-    max-height: 44px;
+    max-height: 50px;
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
   header .logo img {
-    max-height: 60px;
+    max-height: 58px;
+  }
+  .header123.navbar-shrink .logo img {
+    max-height: 52px;
   }
 }
 header .menu {
@@ -1067,39 +1070,54 @@ footer h4 {
 }
 ul.footer-social {
   margin: 0;
-  float: right;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+  float: none;
 }
 ul.footer-social li {
-  display: inline-block;
-  margin: 0 3px;
+  display: inline-flex;
+  margin: 0;
 }
 ul.footer-social li a {
-  width: 32px;
-  height: 32px;
-  float: left;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   color: #ffffff;
-  padding-top: 2px;
-  background: #ff5122;
-  background: -moz-linear-gradient(left, #ff5122 0, #e51928 100%);
-  background: linear-gradient(to right, #0a4a82 0, #610279 100%);
-  border-radius: 3px;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  font-size: 15px;
+  float: none;
   transition: all 0.3s ease;
+  text-decoration: none;
 }
 ul.footer-social li a.facebook:hover {
   background: #1877f2 !important;
-  color: #ffffff;
+  border-color: #1877f2 !important;
+  color: #ffffff !important;
   transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(24, 119, 242, 0.4);
 }
 ul.footer-social li a.instagram:hover {
   background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%) !important;
-  color: #ffffff;
+  border-color: #d6249f !important;
+  color: #ffffff !important;
   transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(214, 36, 159, 0.4);
 }
 ul.footer-social li a.linkedin:hover {
   background: #0077b5 !important;
-  color: #ffffff;
+  border-color: #0077b5 !important;
+  color: #ffffff !important;
   transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 119, 181, 0.4);
 }
 .serv-thumb img {
   max-width: none;
@@ -1271,14 +1289,18 @@ section.our-testimonial {
   color: #7c38c6;
 }
 .social-link h4 {
-  font-size: 14px;
+  font-size: 13px;
+  font-weight: 600;
   text-transform: uppercase;
-  float: left;
-  margin-bottom: 0;
-  margin-top: 10px;
-  margin-right: 10px;
+  letter-spacing: 0.5px;
+  color: #8a929a;
+  float: none;
+  margin: 0;
 }
 .social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
   float: right;
 }
 .contact-link li a:before {
@@ -1970,16 +1992,20 @@ ul.nav.bnav-pills li a:hover {
     transform-origin: left center !important;
   }
   .contact-line li.csocial {
-    padding-left: 81px !important;
+    padding: 16px 20px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
   }
   .contact-line li.csocial:before {
-    position: absolute !important;
-    left: 16px !important;
-    top: 50% !important;
-    margin-top: -24px !important;
-    width: 48px !important;
-    height: 48px !important;
-    font-size: 20px !important;
+    display: none !important;
+  }
+  .contact-line li.csocial .csocial-box {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    gap: 10px !important;
   }
   .contact-line li a span.clabel,
   .contact-line li .csocial-box span.clabel {
@@ -1989,16 +2015,27 @@ ul.nav.bnav-pills li a:hover {
     color: #a855f7 !important;
     display: block !important;
   }
+  .contact-line li .csocial-box span.clabel {
+    margin-bottom: 0 !important;
+  }
   .contact-line li.csocial .c-social-icons {
     display: flex !important;
     gap: 10px !important;
-    margin-top: 4px !important;
+    align-items: center !important;
+    margin: 0 !important;
   }
   .contact-line li.csocial .c-social-icons a {
-    width: 36px !important;
-    height: 36px !important;
-    font-size: 15px !important;
+    width: 38px !important;
+    height: 38px !important;
+    font-size: 16px !important;
     padding: 0 !important;
+    border-radius: 50% !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(168, 85, 247, 0.4) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #ffffff !important;
   }
   .contact-line li.csocial .c-social-icons a:before {
     display: none !important;
