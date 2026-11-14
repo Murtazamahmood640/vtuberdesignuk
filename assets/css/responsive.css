@@ -1,6 +1,49 @@
 @media only screen and (max-width: 850px) {
+  header.header123 .container-fluid .row {
+    margin: 0;
+  }
+  header.header123 .col-md-3 {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    padding: 0 !important;
+  }
+  header.header123 .logo {
+    display: inline-flex !important;
+    align-items: center !important;
+    margin: 0 !important;
+    float: none !important;
+  }
+  header.header123 .logo img {
+    max-height: 46px !important;
+    width: auto !important;
+    margin: 0 !important;
+  }
+  header.header123 .desk-menu {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    float: none !important;
+    margin: 0 !important;
+    width: 42px !important;
+    height: 42px !important;
+    padding: 0 !important;
+    background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%) !important;
+    border: none !important;
+    border-radius: 8px !important;
+    box-shadow: 0 3px 10px rgba(168, 85, 247, 0.35) !important;
+    line-height: 1 !important;
+    cursor: pointer !important;
+  }
+  header.header123 .desk-menu i.fa-bars {
+    color: #ffffff !important;
+    font-size: 19px !important;
+    line-height: 1 !important;
+  }
   .navbar-shrink .desk-menu {
-    background: #fcce01;
+    background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%) !important;
+    border: none !important;
   }
 
   .col-md-7.contact-left {
@@ -550,12 +593,14 @@
 
   header .logo {
     display: inline-block;
-    margin: -10px 0 0;
-    width: 50%;
+    margin: 0;
+    width: auto;
   }
 
   header .logo img {
+    max-height: 48px !important;
     width: auto;
+    margin-top: 0 !important;
   }
 
   header .contlist a {
@@ -613,8 +658,9 @@
   }
 
   header .logo img {
+    max-height: 48px !important;
     width: auto;
-    margin-top: 20px;
+    margin-top: 0 !important;
   }
 
   a.banner-btn.yb-btn.various.ad {
